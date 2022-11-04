@@ -13,7 +13,7 @@
        enter email: <input type="text" name="email" id=""><br>
        enter gender: <br>
         male<input type="radio" name="gender" id="" value="m">
-      female <input type="radio" name="gender" id="" value="f" }}>
+        female <input type="radio" name="gender" id="" value="f">
        <br>
        enter password: <input type="text" name="password" id="">
        <br>
@@ -21,7 +21,7 @@
        <button type="submit">submit</button>
     </form>
     <br><br>
-    <table>
+    <table border="1">
         <tr>
             <td>id</td>
             <td>name</td>

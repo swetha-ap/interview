@@ -28,3 +28,5 @@ route::post('log',[regs::class,'login']);
 route::view('profile','profile');
 route::get('profile',[regs::class,'pro']);
 route::get('logout',[regs::class,'logout']);
+route::view('sub','subject');
+route::post('sub',[regs::class,'insert_sub']);

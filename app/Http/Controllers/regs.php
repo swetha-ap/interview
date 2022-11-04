@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\reg;
+use App\Models\teacher;
 use Session;
 class regs extends Controller
 {
@@ -64,15 +65,32 @@ class regs extends Controller
     public function pro(){
         if(Session::has('loginid')){
             $id=Session::get('loginid');
-            $data=reg::where('id',$id)->first();
+
+            // $data=reg::where('id',$id)->first();
+            if(reg::where('id',$id)){
+            $data=reg::select('regs.img','regs.name','regs.email','teachers.subname','teachers.school','teachers.join_date')->join('teachers','teachers.detail_id','=','regs.id')->where('regs.id',$id)->first();
             return view('profile',['data'=>$data]);
-        }
+        }}
     }
 
     public function logout(){
         if(Session::has('loginid')){
             Session::pull('loginid');
             return redirect('log');
+        }
+    }
+
+    function insert_sub(Request $request){
+        $sname=$request->sname;
+        $sub=$request->sub;
+        $jdate=$request->jdate;
+        $tid=$request->tid;
+        $t1=new teacher(['school'=>$sname,'subname'=>$sub,'join_date'=>$jdate,'detail_id'=>$tid]);
+        $entered=$t1->save();
+        if($entered){
+            return view('subject',['msg'=>'successfully enterd']);
+        }else{
+            return view('subject',['msg'=>'error']);
         }
     }
 }

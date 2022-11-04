@@ -7,13 +7,20 @@
     <title>Document</title>
 </head>
 <body>
+    <!-- <script>
+        console.log({{$data}})
+    </script> -->
     hello
     @if(isset($data))
     {{$data->name}}
-    {{$data->gender}}
-    {{$data->email}}
-    {{$data->password}}
     <img src="{{ asset('storage/img/'.$data->img) }}" alt="" height="200px">
+    <br>
+    <!-- {{$data->gender}} -->
+    YOUR EMAIL :  {{$data->email}} <br>
+    <!-- {{$data->password}} -->
+    YOUR SUBJECT : {{$data->subname}} <br>
+    YOUR SCHOOL : {{$data->school}} <br>
+    JOINED ON : {{$data->join_date}} <br>
     @endif
     <a href="{{url('logout')}}">logout</a>
 </body>
